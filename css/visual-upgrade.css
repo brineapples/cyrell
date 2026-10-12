@@ -1,0 +1,297 @@
+/* ---------- layers ---------- */
+.ovl{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;opacity:0;transition:opacity .95s ease}
+.ovl.on{opacity:1}
+.ovl .cam{position:absolute;inset:-5%;transform-origin:var(--ox,50%) var(--oy,45%)}
+.ovl svg,.ovf svg{width:100%;height:100%;display:block}
+.cam.c-push{animation:camPush 14s ease-out both}.cam.c-pan{animation:camPan 16s ease-in-out both}.cam.c-pull{animation:camPull 12s ease-out both}.cam.c-close{animation:camClose 7s ease-out both}
+@keyframes camPush{from{transform:scale(1)}to{transform:scale(1.09)}}
+@keyframes camPan{from{transform:scale(1.08) translateX(-2.4%)}to{transform:scale(1.08) translateX(2.4%)}}
+@keyframes camPull{from{transform:scale(1.12)}to{transform:scale(1)}}
+@keyframes camClose{from{transform:scale(1)}to{transform:scale(1.2)}}
+#stage.p-pan #actors{animation:parPan 16s ease-in-out both}#stage.p-push #actors{animation:parPush 14s ease-out both}#stage.p-close #actors{animation:parClose 7s ease-out both}
+@keyframes parPan{from{translate:1.6% 0}to{translate:-1.6% 0}}@keyframes parPush{from{scale:1}to{scale:1.035}}@keyframes parClose{from{scale:1}to{scale:1.07}}
+#fg-layer{position:absolute;inset:0;z-index:4;pointer-events:none;overflow:hidden}
+#fg-layer svg{width:100%;height:100%}
+#grade{position:absolute;inset:0;z-index:4;pointer-events:none;transition:background 1.4s ease,opacity .6s;mix-blend-mode:soft-light}
+#grade.g-cold{background:linear-gradient(180deg,#5a78d655,#3a2f7a44)}#grade.g-warm{background:linear-gradient(120deg,#ffb36a55,#ff7fa633)}
+#grade.g-dusk{background:linear-gradient(180deg,#4a5aa044,#ff9b7a44)}#grade.g-dream{background:radial-gradient(ellipse at 50% 40%,#fff1b366,#ff9ec733)}
+#grade.g-violet{background:linear-gradient(180deg,#8a56d066,#2c3a9a44)}#grade.g-bright{background:radial-gradient(ellipse at 50% 30%,#fff6e088,#ffd6c033)}
+#grade.g-dark{background:#0a0a2255}
+#grade.flash{animation:gflash 1.1s ease-out}@keyframes gflash{0%{background:#fff;opacity:.9;mix-blend-mode:normal}100%{opacity:0}}
+#stage.fx-buzz #grade{animation:gbuzz .9s ease-out}@keyframes gbuzz{0%{background:#ffc3e9aa;mix-blend-mode:screen}100%{background:transparent}}
+#stage.shake{animation:stShake .5s}@keyframes stShake{20%{translate:-3px 1px}50%{translate:3px -1px}80%{translate:-2px 0}}
+/* scene art animation */
+.rs{animation:rfall .9s linear infinite;animation-delay:var(--d,0s)}@keyframes rfall{from{transform:translateY(-40px)}to{transform:translateY(var(--h,300px))}}
+.dr{animation:drip 6s ease-in infinite;animation-delay:var(--d,0s)}@keyframes drip{0%{transform:translateY(0);opacity:0}10%{opacity:.8}100%{transform:translateY(var(--h,200px));opacity:0}}
+.bl{animation:bl 3.5s steps(1) infinite;animation-delay:var(--d,0s)}@keyframes bl{0%{opacity:.9}50%{opacity:.15}}
+.car{animation:carx 11s linear infinite;animation-delay:var(--d,0s)}@keyframes carx{from{translate:var(--x0,-200px) 0}to{translate:var(--x1,1300px) 0}}
+.holo{animation:holo 4s ease-in-out infinite alternate}@keyframes holo{from{opacity:.55}to{opacity:1}}
+.curt{transform-origin:top;transform-box:fill-box;animation:curt 6s ease-in-out infinite alternate}@keyframes curt{from{transform:skewX(-2.5deg) scaleX(1)}to{transform:skewX(3deg) scaleX(1.05)}}
+.flk{animation:flk 2.2s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:50% 100%}@keyframes flk{0%{transform:scale(1,1);opacity:.95}35%{transform:scale(.88,1.14) rotate(-3deg)}70%{transform:scale(1.06,.92) rotate(3deg);opacity:.8}100%{transform:scale(.94,1.1)}}
+.glow{animation:glow 3.4s ease-in-out infinite alternate}@keyframes glow{from{opacity:.45}to{opacity:1}}
+.twk{animation:twk 2.8s ease-in-out infinite;animation-delay:var(--d,0s)}@keyframes twk{50%{opacity:.2}}
+.steam{animation:steam 3.2s ease-out infinite;animation-delay:var(--d,0s);transform-box:fill-box}@keyframes steam{0%{transform:translateY(0) scaleX(1);opacity:0}25%{opacity:.7}100%{transform:translateY(-34px) scaleX(1.5);opacity:0}}
+.swing{transform-box:fill-box;transform-origin:50% 0;animation:swing 4s ease-in-out infinite alternate}@keyframes swing{from{transform:rotate(-3deg)}to{transform:rotate(3deg)}}
+.wave{animation:wave 5s ease-in-out infinite alternate}@keyframes wave{from{translate:-18px 0}to{translate:18px 0}}
+.bob{animation:fbob 5s ease-in-out infinite alternate}@keyframes fbob{from{translate:0 -6px}to{translate:0 8px}}
+.hand{transform-box:fill-box;transform-origin:50% 100%;animation:hand 60s linear infinite}@keyframes hand{to{rotate:360deg}}
+.hand2{transform-box:fill-box;transform-origin:50% 100%;animation:hand 5s linear infinite}
+.flap{animation:flap 2s steps(1) infinite}@keyframes flap{0%{opacity:1}50%{opacity:.35}}
+.train{animation:trainx 7s linear infinite}@keyframes trainx{from{translate:-1300px 0}to{translate:1400px 0}}
+.fadeout{animation:fadeout 5s ease-in-out infinite alternate}@keyframes fadeout{from{opacity:.9}to{opacity:.05}}
+.ripple{transform-box:fill-box;transform-origin:center;animation:ripple 4s ease-out infinite;animation-delay:var(--d,0s)}@keyframes ripple{from{transform:scale(.3);opacity:.8}to{transform:scale(1.15);opacity:0}}
+.orb{animation:orb 7s ease-in-out infinite alternate;animation-delay:var(--d,0s)}@keyframes orb{from{translate:0 14px}to{translate:6px -22px}}
+.gull{animation:gull 14s linear infinite}@keyframes gull{from{translate:-120px 0}to{translate:1250px -40px}}
+.door{transform-box:view-box;transform-origin:var(--dx,830px) 0;transition:transform 1.6s cubic-bezier(.3,.7,.2,1)}
+#stage.fx-door .door{transform:scaleX(.18) skewY(-4deg)}#stage.fx-door .doorlight{opacity:1}.doorlight{opacity:.3;transition:opacity 1.6s}
+.bk-slide{transition:transform 1.4s ease;}#stage.fx-arrange .bk-slide{transform:translateY(-14px) rotate(-3deg)}#stage.fx-arrange .sign{opacity:1}.sign{opacity:0;transition:opacity 1.5s}
+#stage.fx-fade .ghostkid{opacity:0;transition:opacity 3s}.ghostkid{opacity:.75;animation:fadeout 5s ease-in-out infinite alternate}
+#stage.fx-guests .guest{animation:guest 1.8s ease-in-out 2}@keyframes guest{50%{transform:translateX(4px) rotate(6deg)}}.guest{transform-box:fill-box;transform-origin:50% 100%}
+.petal2,.mote,.spark2{position:absolute;pointer-events:none;opacity:0}
+.petal2{width:11px;height:15px;border-radius:70% 0 70% 0;background:linear-gradient(135deg,#ffe6ee,#f3a9bf);animation:petalFall var(--t,9s) linear infinite;animation-delay:var(--d,0s);left:var(--x)}
+@keyframes petalFall{0%{translate:0 -40px;rotate:0deg;opacity:0}10%{opacity:.95}100%{translate:60px 560px;rotate:540deg;opacity:.9}}
+.mote{width:4px;height:4px;border-radius:50%;background:#ffe9c0;animation:moteUp var(--t,10s) ease-in-out infinite;animation-delay:var(--d,0s);left:var(--x);top:var(--y)}
+@keyframes moteUp{0%{translate:0 20px;opacity:0}30%{opacity:.8}100%{translate:20px -80px;opacity:0}}
+.spark2{width:7px;height:7px;background:#fff;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);animation:sparkle var(--t,3s) ease-in-out infinite;animation-delay:var(--d,0s);left:var(--x);top:var(--y)}
+@keyframes sparkle{0%,100%{opacity:0;scale:.3}50%{opacity:1;scale:1.5;rotate:90deg}}
+.weather.petal .petal2,.weather.dust .mote,.weather.spark .spark2{opacity:1}
+.weather.petal .mote,.weather.petal .spark2,.weather.dust .petal2,.weather.dust .spark2,.weather.spark .petal2,.weather.spark .mote{display:none}
+.weather:not(.petal):not(.dust):not(.spark) .petal2,.weather:not(.petal):not(.dust):not(.spark) .mote,.weather:not(.petal):not(.dust):not(.spark) .spark2{display:none}
+/* ---------- characters ---------- */
+.actor svg{transform-origin:50% 100%;animation:breath 4.2s ease-in-out infinite;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+@keyframes breath{50%{scale:1 1.014}}
+.actor.turned svg{transform:scaleX(-1)}
+.actor .head,.actor .headb{transform-box:view-box;transform-origin:95px 190px;animation:hsway 6.5s ease-in-out infinite;transition:transform .8s ease}
+@keyframes hsway{0%,100%{rotate:-.9deg}50%{rotate:1.1deg}}
+.actor .lid{transform-box:fill-box;transform-origin:50% 0;transform:scaleY(0);animation:blink 4.6s infinite;animation-delay:var(--bd,0s)}
+@keyframes blink{0%,91%,100%{transform:scaleY(0)}94%{transform:scaleY(1)}}
+.actor[data-emo=sad] .lid{transform:scaleY(.35);animation:none}
+.actor .iris{transition:translate .5s ease}
+.actor .mo,.actor .tear{display:none}
+.actor[data-emo=neutral] .mo-neutral,.actor[data-emo=smile] .mo-smile,.actor[data-emo=sad] .mo-sad,.actor[data-emo=fear] .mo-fear{display:inline}
+.actor.talk .mo{display:none!important}.actor.talk .mo-talk{display:inline!important;transform-box:fill-box;transform-origin:50% 40%;animation:talk .24s ease-in-out infinite alternate}
+@keyframes talk{from{transform:scaleY(.25)}to{transform:scaleY(1.15)}}
+.actor.cry .tear{display:inline;animation:tear 2.2s ease-in infinite}.actor .tear:nth-of-type(2){animation-delay:.7s}
+@keyframes tear{0%{transform:translateY(0);opacity:0}15%{opacity:.9}100%{transform:translateY(28px);opacity:0}}
+.actor[data-emo=fear] .head{animation:shiver .22s linear infinite}@keyframes shiver{50%{translate:.8px 0}}
+.actor .arm{transform-box:view-box;transition:rotate .9s cubic-bezier(.3,.8,.2,1)}
+.actor .armR{transform-origin:146px 248px}.actor .armL{transform-origin:35px 256px}
+.actor .held{display:none}
+.actor.hold-phone .h-phone,.actor.hold-photo .h-photo,.actor.hold-book .h-book,.actor.hold-letter .h-letter,.actor.hold-ticket .h-ticket,.actor.hold-cup .h-cup,.actor.hold-ring .h-ring,.actor.hold-bouquet .h-bouquet,.actor.hold-flowers .h-flowers,.actor.hold-ribbon .h-ribbon{display:block}
+.actor.pose-hold .armR{rotate:100deg}.actor.pose-hold .armL{rotate:-24deg}
+.actor.pose-reachR .armR{rotate:-105deg}.actor.pose-reachL .armL{rotate:105deg}
+.actor.pose-open .armR{rotate:42deg}.actor.pose-touch .armR{rotate:70deg}
+.actor.pose-photo .armR{rotate:92deg}.actor.pose-photo .armL{rotate:-80deg}
+.actor.pose-bouquet .armR{rotate:82deg}.actor.pose-bouquet .armL{rotate:-82deg}
+.actor.pose-tie .armR{rotate:150deg;animation:tie 1.1s ease-in-out infinite alternate}@keyframes tie{to{rotate:138deg}}
+.actor.pose-gasp .armR{rotate:158deg}.actor.pose-hug .armR{rotate:-100deg}.actor.pose-hug .armL{rotate:100deg}
+.actor.pose-drop .armR,.actor.pose-drop .armL{rotate:0deg}
+.actor.pose-sad .head,.actor.pose-sad .headb{transform:translateY(5px) rotate(5deg)}
+.actor.pose-hesitate .head,.actor.pose-hesitate .headb{animation:hesit 2.4s ease-in-out infinite}@keyframes hesit{0%,100%{rotate:-3deg;translate:0 2px}50%{rotate:3deg;translate:0 4px}}
+.actor.pose-shy .head{transform:translateY(3px) rotate(-6deg)}
+.actor.walking{animation:walkx var(--wd,3s) ease-in-out both}.actor.walking svg{animation:breath 4s ease-in-out infinite,wbob .5s ease-in-out infinite}
+@keyframes walkx{from{translate:0 0}to{translate:var(--wx,8%) var(--wy,0)}}@keyframes wbob{50%{translate:0 -7px;rotate:.7deg}}
+.actor.walked{translate:var(--wx,8%) var(--wy,0)}
+.actor.walk-door.walking{animation:walkd 3.4s ease-in-out both}@keyframes walkd{from{translate:0 0;scale:1}to{translate:var(--wx,0) -4%;scale:.86}}
+.actor.look-down .head{transform:translateY(4px) rotate(2deg)}
+.actor.recoil svg{animation:recoil .6s ease-out}@keyframes recoil{30%{translate:-6px 0}}
+.actor .scr{animation:scr 1.6s ease-in-out infinite alternate}@keyframes scr{from{fill:#f3b8d6}to{fill:#fff1f8}}
+/* props */
+.prop{transition:opacity .4s}#props.is-held .prop.holdable{display:none}
+.prop[data-kind=ribbon]{animation:flutter 3s ease-in-out infinite}@keyframes flutter{50%{transform:translate(-50%,-52%) rotate(8deg)}}
+.prop[data-kind=bouquet],.prop[data-kind=flowers]{animation:sway 4s ease-in-out infinite alternate}@keyframes sway{to{transform:translate(-50%,-50%) rotate(5deg)}}
+.prop.buzz{animation:pbuzz .14s linear 8}@keyframes pbuzz{50%{transform:translate(-48%,-50%) rotate(5deg)}}
+.prop.buzz svg{animation:plight 1.2s ease-out}@keyframes plight{0%{filter:drop-shadow(0 0 22px #ffd3f0)}100%{filter:drop-shadow(0 5px 8px #171126)}}
+.prop[data-kind=box] path:nth-child(2){transform-box:fill-box;transform-origin:0 100%;transition:transform 1s cubic-bezier(.3,.8,.2,1)}.prop[data-kind=box].open path:nth-child(2){transform:rotate(-44deg)}
+.prop[data-kind=photo].fade svg{animation:phflick 1s steps(2) infinite}@keyframes phflick{50%{opacity:.3;filter:grayscale(1) blur(1px)}}
+.prop[data-kind=ring] svg{animation:ringglint 2.4s ease-in-out infinite}@keyframes ringglint{50%{filter:drop-shadow(0 0 14px #fff0b8)}}
+.prop.dropit{animation:dropit .8s cubic-bezier(.4,0,1,1) both}@keyframes dropit{to{translate:0 90px;rotate:40deg;opacity:.0}}
+.actor.fx-photofade .h-photo{animation:phflick 1s steps(2) infinite}
+/* phone ui */
+.phone-device{transition:box-shadow .3s}.phone-device.buzz{animation:devbuzz .12s linear 7;box-shadow:0 20px 55px #16101dcc,0 0 46px #ff9fe0}
+@keyframes devbuzz{50%{transform:translate(2px,-1px) rotate(.6deg)}}
+.bubble.pop{animation:bpop .4s cubic-bezier(.3,1.6,.5,1)}@keyframes bpop{from{transform:scale(.6) translateY(10px);opacity:0}}
+.typing2{align-self:flex-end;background:#d7b9dc;border-radius:15px 15px 4px 15px;padding:9px 14px;display:flex;gap:4px}
+.typing2 i{width:7px;height:7px;border-radius:50%;background:#6a4b73;animation:tdot 1s infinite}.typing2 i:nth-child(2){animation-delay:.18s}.typing2 i:nth-child(3){animation-delay:.36s}
+@keyframes tdot{0%,60%,100%{translate:0 0;opacity:.4}30%{translate:0 -5px;opacity:1}}
+.phone.dead .phone-device{filter:brightness(.4) saturate(.3);transition:filter 2s}
+.phone.weak .signal{animation:signal .6s steps(2,end) infinite}
+/* film intro */
+#intro #film-mid>svg{display:none}.ovf{position:absolute;inset:0}
+.film-grain{position:absolute;inset:0;z-index:8;pointer-events:none;opacity:.17;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");animation:grain .5s steps(4) infinite}
+@keyframes grain{25%{background-position:-30px 20px}50%{background-position:40px -40px}75%{background-position:-10px -60px}}
+.film-scratch{position:absolute;top:0;bottom:0;width:2px;z-index:8;pointer-events:none;background:linear-gradient(#fff0,#fff9 30%,#fff0 70%);animation:scratch 1.7s steps(1) infinite;left:20%}
+.film-leak{position:absolute;inset:0;z-index:8;pointer-events:none;mix-blend-mode:screen;background:radial-gradient(ellipse at 100% 0,#ff9e5e66,transparent 50%);animation:leak 3.4s ease-in-out infinite alternate}
+@keyframes scratch{0%{left:12%;opacity:.7}30%{left:63%;opacity:0}60%{left:81%;opacity:.6}100%{left:30%;opacity:0}}@keyframes leak{from{opacity:.2}to{opacity:.9}}
+#film-world{animation-name:filmCamera,gateweave}@keyframes gateweave{0%,100%{rotate:0deg}50%{rotate:.12deg}}
+.film-strip{animation:reelRun 3.8s cubic-bezier(.4,.1,.5,1) both!important;transform-origin:50% 50%;background-image:linear-gradient(#1b1421,#1b1421)}
+.film-strip .strip-frame{position:relative;animation:framejit .22s steps(2) infinite}.film-strip .strip-frame:nth-child(odd){animation-delay:-.1s}
+@keyframes framejit{50%{translate:0 2px}}
+@keyframes reelRun{0%{transform:translateX(-52%) scale(1);opacity:1}62%{transform:translateX(8%) scale(1);opacity:1}100%{transform:translateX(0) scale(4.3);opacity:0}}
+.film-beam{animation:beamGlow 1.1s ease-in-out infinite alternate!important}
+@media(max-width:680px){.actor.walking{--wx:5%}}
+/* ===== story as a phone conversation ===== */
+#vu-thread{display:none;flex:1;min-height:0;overflow:auto;padding:12px 10px 14px;flex-direction:column;gap:7px;pointer-events:auto;background:linear-gradient(#f8eef3,#efdfe9);overscroll-behavior:contain}
+#stage.vu-chat #vu-thread{display:flex}#stage.vu-chat #chat{display:none}
+#stage.vu-chat #phone{display:flex!important}
+#stage.vu-chat .phone-device{width:min(392px,47%);height:92%}
+#stage.vu-chat #actors{right:auto;width:55%}
+#stage.vu-chat .actor{width:clamp(120px,36%,250px)}
+.vt-row{display:flex;gap:6px;align-items:flex-end;color:#312a40;animation:vtIn .38s cubic-bezier(.3,1.5,.5,1) both}
+.vt-row.me{flex-direction:row-reverse}
+@keyframes vtIn{from{opacity:0;transform:translateY(12px) scale(.85)}}
+.vt-av{flex:0 0 26px;height:26px;border-radius:50%;display:grid;place-items:center;font:700 .66rem "DM Sans",sans-serif;color:#fff;background:var(--c,#a98fb0);box-shadow:0 1px 4px #0003}
+.vt-row.cont .vt-av{visibility:hidden}.vt-row.cont .vt-name{display:none}
+.vt-col{display:flex;flex-direction:column;gap:2px;max-width:82%;min-width:0}.vt-row.me .vt-col{align-items:flex-end}
+.vt-name{font-size:.6rem;letter-spacing:.09em;font-weight:700;text-transform:uppercase;color:#7a6479;padding:0 6px}
+.vt-b{background:var(--bg,#fffaf7);border-radius:16px 16px 16px 4px;padding:8px 12px;font-size:.82rem;line-height:1.42;overflow-wrap:anywhere;box-shadow:0 1px 2px #3a284422}
+.vt-row.me .vt-b{border-radius:16px 16px 4px 16px}
+.w-mira{--c:#d48aa5}.w-mira .vt-b{--bg:#fffaf7}
+.w-elara{--c:#6f78c8}.w-elara .vt-b{--bg:#d7b9dc}
+.w-adrian{--c:#4d6b94}.w-adrian .vt-b{--bg:#d3deee}
+.w-celeste{--c:#4f8f7a}.w-celeste .vt-b{--bg:#d0e9de}
+.w-officiant{--c:#8a7a6a}.w-officiant .vt-b{--bg:#e8e1d6}
+.w-you{--c:#8a5cc0}.w-you .vt-b{--bg:#c7a3e6;border:1px solid #a47ccf;font-weight:600}
+.vt-chip{align-self:center;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#6f5873;background:#e3d0e0;border-radius:20px;padding:4px 11px;animation:vtIn .4s both;margin:3px 0}
+.vt-sys{align-self:center;max-width:94%;text-align:center;font-size:.7rem;letter-spacing:.08em;font-weight:700;color:#fff;background:linear-gradient(90deg,#8a5cc0,#d48aa5);border-radius:12px;padding:8px 12px;animation:vtIn .4s both,vtGlow 1.4s ease-out}
+@keyframes vtGlow{0%{box-shadow:0 0 0 0 #d48aa5}100%{box-shadow:0 0 0 14px #d48aa500}}
+.vt-narr{align-self:center;width:96%;background:#e8d9e6;border-left:4px solid #b57fa3;border-radius:6px 12px 12px 6px;padding:9px 12px;font:italic .8rem/1.5 Fraunces,serif;color:#46344e;animation:vtIn .45s both;overflow-wrap:anywhere}
+.vt-tag{display:block;font:700 .56rem "DM Sans",sans-serif;font-style:normal;letter-spacing:.2em;color:#9a6f93;margin-bottom:3px}
+.vt-narr p,.vt-b p{margin:0}
+.vt-typing{display:flex;gap:4px;padding:10px 14px;background:#fffaf7;border-radius:16px 16px 16px 4px;width:fit-content}.vt-row.me .vt-typing{background:#d7b9dc;border-radius:16px 16px 4px 16px}
+.vt-typing i{width:7px;height:7px;border-radius:50%;background:#7a6479;animation:tdot 1s infinite}.vt-typing i:nth-child(2){animation-delay:.18s}.vt-typing i:nth-child(3){animation-delay:.36s}
+.vt-fig{margin:7px 0 0;border-radius:11px;overflow:hidden;border:1px solid #0002;background:#fff;animation:vtIn .6s .2s both}.vt-fig svg{display:block;width:100%;height:auto}.vt-fig figcaption{font:700 .56rem "DM Sans",sans-serif;font-style:normal;letter-spacing:.14em;text-transform:uppercase;padding:4px 8px;background:#2d2238;color:#f3dcca}
+.dooropen{transform-box:fill-box;transform-origin:0 50%;animation:dopen 3s ease-in-out infinite alternate}@keyframes dopen{from{transform:scaleX(1)}to{transform:scaleX(.2)}}
+.signp{stroke-dasharray:220;animation:sign 3.2s ease-in-out infinite}@keyframes sign{0%{stroke-dashoffset:220}60%,100%{stroke-dashoffset:0}}
+@keyframes hue{from{filter:hue-rotate(0)}to{filter:hue-rotate(-150deg) saturate(1.4)}}
+@media(max-width:680px){
+#stage.vu-chat #phone{align-items:flex-start;justify-content:center;padding:8px}
+#stage.vu-chat .phone-device{width:min(340px,94%);height:54%}
+#stage.vu-chat #actors{top:auto;bottom:0;right:0;width:100%;height:50%}
+#stage.vu-chat .actor{width:clamp(80px,28%,140px);height:100%;bottom:-6%}}
+/* ===== recall scenes + flow ===== */
+#controls.vu-wait{opacity:.5;cursor:progress}
+#vu-say{position:absolute;z-index:6;left:var(--x,50%);top:6%;transform:translateX(-50%) scale(.9);max-width:min(380px,72%);background:#fffaf7;color:#312a40;border-radius:18px;padding:10px 15px;font:.95rem/1.45 Fraunces,serif;box-shadow:0 10px 30px #0008;opacity:0;pointer-events:none;transition:opacity .35s,transform .35s,left .5s}
+#vu-say.show{opacity:1;transform:translateX(-50%) scale(1);pointer-events:auto}
+#vu-say:after{content:"";position:absolute;left:50%;bottom:-10px;margin-left:-10px;border:10px solid transparent;border-top-color:#fffaf7;border-bottom:0}
+#vu-say b,#vu-cap b{display:block;font:700 .62rem "DM Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#a0587a;margin-bottom:2px}
+#vu-cap{position:absolute;z-index:6;left:50%;bottom:14px;transform:translateX(-50%) translateY(10px);max-width:min(720px,90%);text-align:center;background:#150f20dd;color:#fff0e0;border-radius:12px;padding:11px 18px;font:italic 1rem/1.5 "Playfair Display",serif;opacity:0;pointer-events:none;transition:opacity .4s,transform .4s;border:1px solid #e4aabb55}
+#vu-cap.show{opacity:1;transform:translateX(-50%);pointer-events:auto}#vu-cap b{color:#efcd91}
+#vu-ins{position:absolute;z-index:6;top:15%;width:clamp(140px,22%,210px);background:#fff;padding:6px 6px 0;border-radius:4px;box-shadow:0 12px 30px #000a;opacity:0;pointer-events:none;transform:rotate(-4deg) scale(.8);transition:opacity .5s,transform .6s cubic-bezier(.3,1.4,.5,1)}
+#vu-ins.r{right:5%;left:auto}#vu-ins.l{left:5%;right:auto;transform:rotate(4deg) scale(.8)}
+#vu-ins.show{opacity:1;transform:rotate(-3deg) scale(1)}#vu-ins.l.show{transform:rotate(3deg) scale(1)}
+#vu-ins svg{display:block;width:100%;height:auto}#vu-ins small{display:block;text-align:center;font:700 .56rem "DM Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#4a3a52;padding:6px 0}
+@media(max-width:680px){#vu-say{top:3%;max-width:88%;font-size:.88rem}#vu-ins{top:36%;width:30%}#vu-cap{font-size:.9rem;bottom:8px}}
+/* ===== v3: conversation + live scene layout ===== */
+body.vu-chat #speaker,body.vu-chat #story-line,body.vu-live #speaker,body.vu-live #story-line{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0!important;min-height:0!important}
+body.vu-chat .dialogue,body.vu-live .dialogue{min-height:0;padding-block:12px}
+body.vu-chat .dialogue-head,body.vu-live .dialogue-head{justify-content:flex-end;margin:0 0 4px}
+body.vu-chat #controls p.choice,body.vu-live #controls p.choice{display:none}
+#controls.vt-wait .choice{opacity:.35;pointer-events:none}#controls.vt-wait .primary{opacity:.7}
+#actors{width:100%;transition:width .9s cubic-bezier(.4,0,.2,1)}
+#stage.vu-chat #actors{width:55%;right:auto}
+#stage.vu-chat .actor{width:clamp(105px,36%,250px)}
+#vu-live{position:absolute;inset:0;z-index:6;pointer-events:none;opacity:0;transition:opacity .4s}#vu-live.on{opacity:1}
+.lv-bub{position:absolute;width:max-content;max-width:min(370px,66%);background:#fffaf4;color:#2c2236;border-radius:18px;padding:10px 15px 12px;font:600 .95rem/1.45 "DM Sans",system-ui,sans-serif;box-shadow:0 10px 30px #120c1f99;animation:lvIn .4s cubic-bezier(.3,1.5,.5,1)}
+.lv-bub:after{content:"";position:absolute;left:var(--tx,50%);bottom:-10px;margin-left:-10px;border:10px solid transparent;border-top-color:#fffaf4;border-bottom:0}
+.lv-bub .nm{display:block;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;font-weight:800;margin-bottom:2px;color:var(--c,#a98fb0)}
+.lv-bub .txt,.lv-narr .txt{position:relative;display:block}.lv-bub .full,.lv-narr .full{visibility:hidden}.lv-bub .typed,.lv-narr .typed{position:absolute;inset:0}
+.lv-narr{position:absolute;left:50%;top:5%;transform:translateX(-50%);width:min(640px,90%);background:#1b1426e8;border:1px solid #c9a6c066;border-radius:14px;padding:12px 18px;color:#f8ebf0;font:italic .98rem/1.55 Fraunces,Georgia,serif;text-align:center;box-shadow:0 10px 30px #0008;animation:lvIn .5s ease both;max-height:50%;overflow:auto}
+@keyframes lvIn{from{opacity:0;transform:translateY(10px) scale(.92)}}.lv-narr{animation-name:lvInN}@keyframes lvInN{from{opacity:0;transform:translate(-50%,8px)}}
+.lv-fig{position:absolute;margin:0;top:36%;width:clamp(104px,17%,170px);background:#fffdf8;border-radius:5px;padding:5px 5px 0;box-shadow:0 12px 26px #0009;transform:rotate(var(--r,-4deg));animation:figIn .8s cubic-bezier(.3,1.4,.5,1) both}
+.lv-fig svg{display:block;width:100%;height:auto;border-radius:2px}.lv-fig figcaption{font:italic .78rem Caveat,"Fraunces",serif;color:#5a4660;padding:4px 2px 5px;text-align:center}
+.lv-fig.c1{left:auto;right:7%;top:38%;--r:4deg}.lv-fig.c2{left:50%;margin-left:calc(clamp(104px,17%,170px)/-2);--r:-3deg}.lv-fig.c3{left:2%;top:22%;width:clamp(90px,14%,140px);--r:-5deg}
+@keyframes figIn{from{opacity:0;transform:translateY(-26px) rotate(calc(var(--r,-4deg) - 10deg)) scale(.7)}}
+.w-mira{--c:#d48aa5}.w-adrian{--c:#4d6b94}.w-celeste{--c:#4f8f7a}.w-officiant{--c:#8a7a6a}.w-elara{--c:#6f78c8}
+.vt-row.vt-tp{animation:vtIn .25s both}
+@media(max-width:680px){.lv-bub{max-width:80%;font-size:.86rem}.lv-narr{font-size:.86rem;top:3%;max-height:44%}.lv-fig{top:46%;width:clamp(86px,24%,130px)}.lv-fig.c1{right:3%}.lv-fig.c3{top:30%;left:2%}
+#stage.vu-chat #actors{width:100%}#stage.vu-chat .actor{width:clamp(80px,28%,140px)}}
+/* ===== v4: prompts, outcome pills, flashbacks ===== */
+.vu-prompt{width:100%;margin:0 0 4px;font:800 .66rem "DM Sans",system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#f2cf9a}
+.vt-chip.up{background:#d4ecd9;color:#2f6a42}.vt-chip.down{background:#f3d6d6;color:#8a3a3a}.vt-chip.up,.vt-chip.down{letter-spacing:.06em;font-size:.6rem}
+.lv-pills{position:absolute;left:50%;bottom:7%;transform:translateX(-50%);display:flex;gap:6px;flex-wrap:wrap;justify-content:center;width:90%;animation:lvIn .5s both}
+.lv-pills span{font:800 .62rem "DM Sans",sans-serif;letter-spacing:.08em;padding:5px 10px;border-radius:20px;box-shadow:0 4px 14px #0007}
+.lv-pills .up{background:#d4ecd9;color:#2f6a42}.lv-pills .down{background:#f3d6d6;color:#8a3a3a}
+#vu-vig{position:absolute;inset:0;z-index:5;pointer-events:none;opacity:0;transition:opacity 1s;background:radial-gradient(ellipse at 50% 50%,transparent 45%,#2a1a0e99 100%);box-shadow:inset 0 0 90px 24px #1b0f0acc}
+#vu-flashtag{position:absolute;top:14px;right:16px;z-index:7;pointer-events:none;opacity:0;transition:opacity .8s;font:italic 600 .95rem Fraunces,Georgia,serif;letter-spacing:.14em;color:#ffe9c4;text-shadow:0 2px 12px #000;padding:5px 14px;border:1px solid #ffe9c488;border-radius:3px;background:#2a1a0e88;animation:ftflick 3s steps(1) infinite}
+@keyframes ftflick{94%{filter:brightness(1.6)}96%{filter:brightness(.7)}}
+#stage.vu-flash #vu-vig,#stage.vu-flash #vu-flashtag{opacity:1}
+#stage.vu-flash .ovl,#stage.vu-flash #actors{filter:sepia(.62) saturate(.85) contrast(1.06) brightness(.97)}
+#stage.vu-flash .film-grain2{opacity:.28}
+.film-grain2{position:absolute;inset:0;z-index:5;pointer-events:none;opacity:0;transition:opacity 1s;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");animation:grain .5s steps(4) infinite}
+#vu-wipe{position:absolute;inset:0;z-index:9;pointer-events:none;opacity:0;background:radial-gradient(circle at 50% 50%,#fff6e0 0,#ffe3b8 40%,#e8b98a 100%)}
+#vu-wipe.go{animation:wipe 1.1s ease-out}@keyframes wipe{0%{opacity:0;clip-path:circle(0% at 50% 50%)}35%{opacity:.95;clip-path:circle(75% at 50% 50%)}100%{opacity:0;clip-path:circle(100% at 50% 50%)}}
+#stage.vu-flash .actor{filter:drop-shadow(0 0 22px #ffd9a099) drop-shadow(0 12px 12px #160e25)}
+.catb{transform-box:fill-box;transform-origin:50% 100%;animation:cbreath 3.6s ease-in-out infinite}@keyframes cbreath{50%{transform:scaleY(1.07)}}
+
+@keyframes ghostfade{from{opacity:.95}to{opacity:.25}}
+#stage[data-fade="1"] .prop,#stage[data-fade="1"] #actors .actor[data-who="elara"]{animation:pfade 3s ease-in-out infinite alternate}
+#stage[data-fade="2"] .prop,#stage[data-fade="2"] #actors .actor[data-who="elara"]{animation:pfade 1.6s ease-in-out infinite alternate;filter:blur(1px)}
+#stage[data-fade="3"] .prop,#stage[data-fade="3"] #actors .actor[data-who="elara"]{opacity:.12;filter:blur(3px);transition:opacity 2.5s,filter 2.5s}
+@keyframes pfade{from{opacity:1}to{opacity:.35}}
+#stage[data-glitch="1"] #art,#stage[data-glitch="1"] .ovl{animation:glt .5s steps(2) infinite}
+@keyframes glt{0%{transform:translateX(0)}50%{transform:translateX(3px);filter:hue-rotate(20deg)}100%{transform:translateX(-2px)}}
+#stage[data-close="1"] #actors{transform:scale(1.18) translateY(6%);transform-origin:50% 70%;transition:transform 1.2s ease}
+#stage[data-close="1"] .actor .armR,#stage[data-close="1"] .actor .armL{animation:trem .09s linear infinite alternate}
+@keyframes trem{to{translate:.6px .6px}}
+.vu-recap{width:100%;box-sizing:border-box;flex:1 1 100%;max-height:20vh;overflow:auto;margin:6px 0 10px;padding:10px 12px;border-radius:12px;background:#ffffff14;border:1px solid #ffffff22;font:500 .8rem/1.45 "DM Sans",system-ui,sans-serif;color:#f8edf3}
+.vu-recap h4{margin:0 0 6px;font-size:.62rem;letter-spacing:.2em;color:#e9c8b6}.vu-recap p{margin:0 0 4px}.vu-recap-s{opacity:.7;font-size:.72rem;margin-top:6px!important}
+
+/* v7: action, shots, mute */
+.cam.c-focus{animation:camFocus 6s ease-in-out both}@keyframes camFocus{from{transform:scale(1)}to{transform:scale(1.42)}}
+.cam.c-slow{animation:camSlow 24s ease-in-out both}@keyframes camSlow{from{transform:scale(1.02)}to{transform:scale(1.08) translateX(-.8%)}}
+.cam.c-hold{animation:none;transform:scale(1.03)}
+#stage.ots #actors .actor:not(.active):not(.talk){filter:blur(1.4px) brightness(.8);transition:filter .8s}
+.actor.enter-l{animation:enterL 1.8s ease-out both}.actor.enter-r{animation:enterR 1.8s ease-out both}
+@keyframes enterL{from{translate:-70% 0;opacity:0}30%{opacity:1}to{translate:0 0;opacity:1}}@keyframes enterR{from{translate:70% 0;opacity:0}30%{opacity:1}to{translate:0 0;opacity:1}}
+.actor.shake .arm{animation:trem .08s linear infinite alternate}.actor.shake .head{animation:hshake .12s linear infinite alternate}@keyframes hshake{to{translate:.7px 0}}
+.actor.listen .head,.actor.listen .headb{animation:nod 5s ease-in-out infinite}@keyframes nod{0%,100%{rotate:0deg}40%{rotate:2.2deg;translate:0 1px}60%{rotate:-1deg}}
+.actor.clutch .armR,.actor.clutch .armL{rotate:30deg}
+.actor[data-emo=guarded] .mo-guarded,.actor[data-emo=curious] .mo-curious,.actor[data-emo=surprise] .mo-surprise{display:inline}
+.actor[data-emo=surprise] .lid{transform:scaleY(0);animation:none}
+#props .prop.fall{animation:propfall 1.6s cubic-bezier(.5,0,.9,.6) forwards}@keyframes propfall{to{transform:translateY(120px) rotate(40deg);opacity:.15}}
+#stage.fx-candle .fg-layer,#stage.fx-candle #art{animation:candle .22s steps(2) infinite alternate}@keyframes candle{to{filter:brightness(1.05)}}
+#stage.fx-sun:before{content:"";position:absolute;inset:0;z-index:5;pointer-events:none;background:linear-gradient(105deg,transparent 30%,#ffe9b855 48%,transparent 66%);animation:sunsweep 4.6s ease-in-out both}@keyframes sunsweep{from{transform:translateX(-60%);opacity:0}30%{opacity:1}to{transform:translateX(60%);opacity:0}}
+#stage.fx-possible #art,#stage.fx-possible .ovl.on{animation:possible 4s ease-in-out}@keyframes possible{30%{filter:blur(2px) brightness(1.25) hue-rotate(25deg)}}
+#stage.fx-hue .ovl.on{animation:hueSwap 3.4s ease-in-out}@keyframes hueSwap{40%{filter:hue-rotate(-60deg) saturate(1.4)}}
+#stage.fx-dip:after{content:"";position:absolute;inset:0;z-index:9;pointer-events:none;background:#07060f;animation:dip 1.7s ease-in-out both}@keyframes dip{0%{opacity:0}35%{opacity:.85}100%{opacity:0}}
+#stage.fx-rain #weather{opacity:1;filter:brightness(1.2)}
+#stage.fx-finale:after{content:"";position:absolute;inset:0;z-index:9;pointer-events:none;background:linear-gradient(#000 0 9%,transparent 9% 91%,#000 91%);animation:letterbox 2s ease-out both}@keyframes letterbox{from{clip-path:inset(40% 0)}to{clip-path:inset(0)}}
+#stage.fx-hover #props .prop,#stage.fx-hover .phone-device{animation:hover 1.3s ease-in-out infinite alternate}@keyframes hover{to{filter:drop-shadow(0 0 14px #ffd1e8);transform:scale(1.04)}}
+#vu-song{position:absolute;left:10px;top:8px;z-index:31;padding:7px 12px;border-radius:99px;border:1px solid #ffffff40;background:#150f24cc;color:#f8edf3;font:600 12px/1.2 "DM Sans",sans-serif;cursor:pointer;backdrop-filter:blur(4px)}#vu-song.hidden{display:none}#vu-song.mini{top:auto;bottom:12px;left:12px;padding:5px 9px;font-size:11px;opacity:.75}#vu-song.mini span{max-width:0;overflow:hidden;display:inline-block;white-space:nowrap;vertical-align:bottom}#vu-song.mini:hover span{max-width:300px}#vu-song.have{border-color:#e8aabb99}#vu-song input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}
+.vfx{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.fx-flick{background:repeating-linear-gradient(90deg,#fff1 0 2px,#0000 2px 9px);animation:fxfl .18s steps(2) infinite}@keyframes fxfl{50%{opacity:.25}}
+.fx-dust i{position:absolute;bottom:30%;left:46%;width:6px;height:6px;border-radius:50%;background:#fff3d8aa;animation:fxdust 2.4s ease-out forwards}.fx-dust i:nth-child(2){left:50%;animation-delay:.2s}.fx-dust i:nth-child(3){left:53%;animation-delay:.4s}.fx-dust i:nth-child(4){left:48%;animation-delay:.6s}.fx-dust i:nth-child(5){left:52%;animation-delay:.8s}@keyframes fxdust{to{transform:translate(18px,-120px);opacity:0}}
+.fx-glow{background:radial-gradient(circle at 56% 66%,#cfe3ff88,#0000 30%);animation:fxglow 1s ease-in-out infinite alternate}@keyframes fxglow{from{opacity:.35}to{opacity:1}}
+#film-back.fx-pan{animation:fxpan 4.4s linear forwards}@keyframes fxpan{from{transform:scale(1.12) translateX(3%)}to{transform:scale(1.12) translateX(-4%)}}
+.walkbob{animation:fxbob .55s ease-in-out infinite alternate}@keyframes fxbob{to{translate:0 -6px}}
+.fx-sparkle i,.fx-spark2 i{position:absolute;width:10px;height:10px;background:#fff4c8;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);animation:fxsp 1.2s ease-in-out infinite}
+.fx-sparkle i:nth-child(1){left:57%;top:58%}.fx-sparkle i:nth-child(2){left:62%;top:62%;animation-delay:.2s}.fx-sparkle i:nth-child(3){left:59%;top:66%;animation-delay:.5s}.fx-sparkle i:nth-child(4){left:63%;top:55%;animation-delay:.7s}.fx-sparkle i:nth-child(5){left:55%;top:63%;animation-delay:.3s}.fx-sparkle i:nth-child(6){left:61%;top:70%;animation-delay:.9s}
+.fx-spark2 i:nth-child(1){left:50%;top:40%}.fx-spark2 i:nth-child(2){left:48%;top:55%;animation-delay:.3s}.fx-spark2 i:nth-child(3){left:52%;top:70%;animation-delay:.6s}.fx-spark2 i:nth-child(4){left:49%;top:30%;animation-delay:.9s}.fx-spark2 i:nth-child(5){left:51%;top:62%;animation-delay:.1s}@keyframes fxsp{0%,100%{transform:scale(.2);opacity:0}50%{transform:scale(1.3);opacity:1}}
+.fx-hearts i{position:absolute;left:50%;bottom:45%;color:#f2a0b8;font-size:22px;font-style:normal;animation:fxht 2s ease-out forwards}.fx-hearts i:nth-child(2){left:44%;animation-delay:.3s}.fx-hearts i:nth-child(3){left:56%;animation-delay:.6s}@keyframes fxht{from{transform:translateY(0);opacity:1}to{transform:translateY(-130px);opacity:0}}
+.fx-veil{background:linear-gradient(180deg,#fff9,#fff3 70%,#0000);transform-origin:31% 0;animation:fxveil 2.2s ease-out forwards;clip-path:polygon(14% 0,48% 0,52% 70%,10% 70%)}@keyframes fxveil{from{transform:translateY(-40%);opacity:0}to{transform:none;opacity:.9}}
+.fx-crack svg{width:100%;height:100%}.fx-crack path{fill:none;stroke:#fff6e8;stroke-width:.7;filter:drop-shadow(0 0 3px #ffb0c8);stroke-dasharray:140;stroke-dashoffset:140;animation:fxcr 1.6s ease-out forwards}@keyframes fxcr{to{stroke-dashoffset:0}}
+.fx-fadephoto{animation:fxfade 3.4s ease-in-out forwards!important}@keyframes fxfade{0%{opacity:1;filter:none}30%{opacity:.4;filter:blur(1px)}45%{opacity:.9}100%{opacity:.18;filter:blur(3px) grayscale(1)}}
+.fx-tie{animation:fxtie 2.4s ease-in-out forwards!important}@keyframes fxtie{0%{transform:translate(-50%,-50%) rotate(-14deg) scale(.9)}50%{transform:translate(-50%,-50%) rotate(8deg) scale(1.05)}100%{transform:translate(-50%,-50%) rotate(0) scale(1)}}
+.fx-doors b{position:absolute;top:0;bottom:0;width:50%;background:#f4e6d6;box-shadow:0 0 40px #0006;animation:fxd 2.4s .3s ease-in forwards}.fx-doors b:first-child{left:0;transform-origin:left}.fx-doors b:nth-child(2){right:0;transform-origin:right;animation-name:fxd2}.fx-doors u{position:absolute;inset:0;background:radial-gradient(circle at 50% 55%,#fff8e0cc,#0000 60%);opacity:0;animation:fxl 2.4s .5s forwards;text-decoration:none}@keyframes fxd{to{transform:translateX(-100%)}}@keyframes fxd2{to{transform:translateX(100%)}}@keyframes fxl{to{opacity:1}}
+.tz{overflow:hidden;background:#0a0710}.tz .tzs{position:absolute;inset:0;width:100%;height:100%}
+.tz-dolly{animation:tzd 2.4s ease-out both;transform-origin:50% 60%}.tz-push{animation:tzp 2.2s ease-out both}@keyframes tzd{from{transform:scale(1.02)}to{transform:scale(1.18)}}@keyframes tzp{from{transform:scale(1.2)}to{transform:scale(1)}}
+.tz-flash{background:#fff;opacity:0;animation:tzf1 .5s ease-out}@keyframes tzf1{0%{opacity:.8}100%{opacity:0}}
+.tzb{animation:tzbk 3s ease-in-out infinite alternate}@keyframes tzbk{to{opacity:.4;transform:translateY(-8px)}}
+.tzp{animation:tzpt 6s linear infinite}@keyframes tzpt{to{transform:translate(-40px,540px)}}
+.tzt{animation:tzt1 1.2s ease-in-out infinite}@keyframes tzt1{50%{opacity:.1;transform:scale(.6)}}
+.tzl{animation:tzl1 1s ease-in forwards}@keyframes tzl1{to{opacity:0}}
+.tzf{animation:flk .3s ease-in-out infinite alternate}
+.tzfade{animation:tzfd 1.8s .3s ease-in forwards}@keyframes tzfd{to{opacity:0;filter:blur(4px)}}
+.tzdoor{transform-origin:350px 270px;animation:tzdr 1.7s .3s ease-in-out forwards}@keyframes tzdr{to{transform:perspective(900px) rotateY(-72deg)}}
+.tzroomlight{animation:tzrl 1.7s .3s forwards}@keyframes tzrl{to{opacity:.35}}
+.tzfig{opacity:0;animation:tzfg 1s 1.4s forwards}@keyframes tzfg{to{opacity:1}}
+.tzhand{animation:tzh .12s linear infinite alternate;transform-origin:700px 440px}@keyframes tzh{to{transform:translate(2px,-2px) rotate(.8deg)}}
+.tzpen{stroke-dasharray:300;stroke-dashoffset:300;animation:fxcr 1.8s ease-out forwards}
+.neon{filter:drop-shadow(0 0 4px #ff9ad0) drop-shadow(0 0 9px #7ee8ff);animation:neonf 3.2s steps(1) infinite}@keyframes neonf{0%,92%,96%{opacity:1}94%,98%{opacity:.35}}
+.phone-device{position:relative}.vu-scr{position:absolute;right:6px;z-index:6;width:30px;height:30px;min-height:0;border-radius:50%;border:1px solid #c9a7bf;background:#fff8fbe6;color:#7a4a64;font-size:12px;cursor:pointer;pointer-events:auto;display:none;box-shadow:0 2px 8px #0003}
+.vu-scr.up{top:52px}.vu-scr.dn{bottom:12px}#stage.vu-chat .vu-scr{display:block}
+#vu-jump{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:7;min-height:0;padding:6px 12px;border-radius:99px;border:0;background:#8c3a5a;color:#fff;font:600 12px "DM Sans",sans-serif;cursor:pointer;pointer-events:auto;display:none}#vu-jump.on{display:block}
+#vu-log{position:absolute;right:12px;top:48px;z-index:30;min-height:0;padding:5px 10px;border-radius:99px;border:1px solid #ffffff40;background:#150f24cc;color:#f8edf3;font:600 11px "DM Sans",sans-serif;cursor:pointer;display:none}#stage.vu-live #vu-log{display:block}
+#vu-mute{position:absolute;right:12px;bottom:12px;z-index:30;width:34px;height:34px;border-radius:50%;border:1px solid #ffffff40;background:#150f24aa;color:#f8edf3;font:700 16px/1 "DM Sans",sans-serif;cursor:pointer;backdrop-filter:blur(4px)}
+#vu-mute[aria-pressed=true]{background:#8c3a5acc}
